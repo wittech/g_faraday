@@ -75,11 +75,15 @@ open class FaradayFlutterViewController: FlutterViewController, UINavigationCont
     
     open override func viewDidLoad() {
         super.viewDidLoad()
+        //TODO:增加导航栏的隐藏
+        navigationController?.isNavigationBarHidden = true;
         view.backgroundColor = backgroundClear ? .clear : .white
         navigationController?.delegate = self
     }
     
     open override func viewWillAppear(_ animated: Bool) {
+        //TODO:增加导航栏的隐藏
+        navigationController?.isNavigationBarHidden = true;
         engine?.viewController = self
         isShowing = true
         Faraday.sendPageState(.show(id)) { _ in }
@@ -92,6 +96,8 @@ open class FaradayFlutterViewController: FlutterViewController, UINavigationCont
     }
     
     open override func viewDidAppear(_ animated: Bool) {
+        //TODO:增加导航栏的隐藏
+        navigationController?.isNavigationBarHidden = true;
         interactivePopGestureRecognizerDelegate = navigationController?.interactivePopGestureRecognizer?.delegate
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         let isEnabled = navigationController?.interactivePopGestureRecognizer?.isEnabled ?? false
