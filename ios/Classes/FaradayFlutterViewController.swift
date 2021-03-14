@@ -82,8 +82,6 @@ open class FaradayFlutterViewController: FlutterViewController, UINavigationCont
     }
     
     open override func viewWillAppear(_ animated: Bool) {
-        //TODO:增加导航栏的隐藏
-        navigationController?.isNavigationBarHidden = true;
         engine?.viewController = self
         isShowing = true
         Faraday.sendPageState(.show(id)) { _ in }
@@ -93,11 +91,11 @@ open class FaradayFlutterViewController: FlutterViewController, UINavigationCont
         if #available(iOS 11.0, *) {
             additionalSafeAreaInsets = .zero
         }
+        //TODO:增加导航栏的隐藏
+        navigationController?.isNavigationBarHidden = true;
     }
     
     open override func viewDidAppear(_ animated: Bool) {
-        //TODO:增加导航栏的隐藏
-        navigationController?.isNavigationBarHidden = true;
         interactivePopGestureRecognizerDelegate = navigationController?.interactivePopGestureRecognizer?.delegate
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         let isEnabled = navigationController?.interactivePopGestureRecognizer?.isEnabled ?? false
@@ -107,6 +105,8 @@ open class FaradayFlutterViewController: FlutterViewController, UINavigationCont
         }
         
         super.viewDidAppear(animated)
+        //TODO:增加导航栏的隐藏
+        navigationController?.isNavigationBarHidden = true;
     }
     
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
