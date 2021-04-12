@@ -19,6 +19,11 @@ class Faraday {
   static BuildContext? get topContext =>
       _key?.currentState?.topNavigator?.currentContext;
 
+  ///刷新页面
+  void refresh() {
+    _key?.currentState?.recreateLastPage();
+  }
+
   ///
   ///`Flutter Native 容器`: iOS端是指`FlutterViewController` Android端是指
   ///`FlutterActivity`或者`FlutterFragment`容器初始化时需要指定 `name` 以及 `arguments`
@@ -50,6 +55,7 @@ class Faraday {
     ColorProvider? nativeContainerBackgroundColorProvider,
     TransitionBuilderProvider? switchPageAnimation,
     List<NavigatorObserver>? observers,
+    WidgetBuilder? errorPage,
   }) {
     return FaradayPageRouteBuilder(
       pageBuilder: (context) {
@@ -59,6 +65,7 @@ class Faraday {
           backgroundColorProvider: nativeContainerBackgroundColorProvider,
           transitionBuilderProvider: switchPageAnimation,
           observers: observers,
+          errorPage: errorPage,
           key: _key,
         );
         return page;
