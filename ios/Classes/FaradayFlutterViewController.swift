@@ -76,7 +76,7 @@ open class FaradayFlutterViewController: FlutterViewController, UINavigationCont
     open override func viewDidLoad() {
         super.viewDidLoad()
         //TODO:增加导航栏的隐藏
-        navigationController?.isNavigationBarHidden = true;
+        navigationController?.navigationBar.isHidden = true;
         view.backgroundColor = backgroundClear ? .clear : .white
         navigationController?.delegate = self
     }
@@ -92,7 +92,7 @@ open class FaradayFlutterViewController: FlutterViewController, UINavigationCont
             additionalSafeAreaInsets = .zero
         }
         //TODO:增加导航栏的隐藏
-        navigationController?.isNavigationBarHidden = true;
+        navigationController?.navigationBar.isHidden = true;
     }
     
     open override func viewDidAppear(_ animated: Bool) {
@@ -106,7 +106,7 @@ open class FaradayFlutterViewController: FlutterViewController, UINavigationCont
         
         super.viewDidAppear(animated)
         //TODO:增加导航栏的隐藏
-        navigationController?.isNavigationBarHidden = true;
+        navigationController?.navigationBar.isHidden = true;
     }
     
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
@@ -136,6 +136,8 @@ open class FaradayFlutterViewController: FlutterViewController, UINavigationCont
 //            let succeed = r as? Bool ?? false
 //            debugPrint("id: \(id) send pageState `hiden` \(succeed ? "succeed" : "failed")")
 //        }
+        //TODO:视图隐藏的时候，将导航还原，避免出现顶部白板的问题；
+        navigationController?.navigationBar.isHidden = false;
         super.viewDidDisappear(animated)
     }
     
